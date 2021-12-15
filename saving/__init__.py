@@ -36,9 +36,9 @@ def save_snapshot(data_root: str, base_url: str, username: str, password: str, p
 
     this_day_text = this_day.text
     next_day_text = next_day.text
-    DOWNLOAD_SIZE.labels(operation="download_this_day").observe(
+    DOWNLOAD_SIZE.labels(operation="download_this_day").set(
         len(this_day.content))
-    DOWNLOAD_SIZE.labels(operation="download_next_day").observe(
+    DOWNLOAD_SIZE.labels(operation="download_next_day").set(
         len(next_day.content))
 
     current_path = f"{data_root}/{int(time.time())}"
