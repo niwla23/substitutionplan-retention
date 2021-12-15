@@ -24,6 +24,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: proxy/Dockerfile
+        file: Dockerfile
         push: true
         tags: ghcr.io/niwla23/substitutionplan-retention:latest
