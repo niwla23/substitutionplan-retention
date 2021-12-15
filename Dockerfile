@@ -6,4 +6,4 @@ RUN pip install -r /opt/requirements.txt
 ADD . /opt
 WORKDIR /opt
 
-RUN python3 main.py
+CMD [ "python", "main.py" ]

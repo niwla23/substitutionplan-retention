@@ -1,0 +1,15 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - 5424:5424
+    restart: unless-stopped
+    environment:
+      - DATA_PATH=/data
+    env_file:
+      - .env
+    volumes:
+      - ./docker-data:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro

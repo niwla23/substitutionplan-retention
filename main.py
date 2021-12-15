@@ -14,7 +14,7 @@ password = os.environ["PASSWORD"]
 path_this_day = os.environ["PATH_THIS_DAY"]
 path_next_day = os.environ["PATH_NEXT_DAY"]
 push = os.environ["PUSH"].lower() == "true"
-
+run_at = os.environ["RUN_AT"]
 
 def job(_ctx):
     print("saving plans...")
@@ -25,8 +25,7 @@ def job(_ctx):
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
     start_http_server(5424)
-    schedule.every().day.at("16:45").do(job, "hi")
+    schedule.every().day.at(run_at).do(job, "hi")
     while True:
         schedule.run_pending()
-        time.sleep(0.01)
-        print(schedule.idle_seconds(), end="\r")
+        time.sleep(1)
