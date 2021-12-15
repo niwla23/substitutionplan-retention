@@ -49,9 +49,9 @@ def save_snapshot(data_root: str, base_url: str, username: str, password: str, p
     with open(f"{current_path}/next_day.html", "w", encoding="utf-8") as file:
         file.write(next_day_text)
 
-    os.system(f"git add {current_path}/this_day.html")
-    os.system(f"git add {current_path}/next_day.html")
+    os.system(f"cd {current_path}; git add this_day.html")
+    os.system(f"cd {current_path}; git add next_day.html")
     os.system(
-        f"git commit -m '📖 add substitution plans from {datetime.now().strftime('%d.%m.%y, %H:%M')}'")
+        f"cd {current_path}; git commit -m '📖 add substitution plans from {datetime.now().strftime('%d.%m.%y, %H:%M')}'")
     if push:
-        os.system("git push")
+        os.system("cd {current_path}; git push")
