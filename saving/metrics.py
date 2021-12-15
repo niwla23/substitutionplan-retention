@@ -12,3 +12,9 @@ DOWNLOAD_SIZE = Gauge(
     'Size of a downloaded files in bytes',
     ['operation']
 )
+
+
+LAST_DOWNLOAD_TIME = Gauge(
+    'iserv_last_download_time',
+    'Time in UNIX timestamp of last download'
+)

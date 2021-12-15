@@ -2,7 +2,7 @@ import iservscrapping
 import os
 import time
 from datetime import datetime
-from saving.metrics import DOWNLOAD_SIZE, DOWNLOAD_TIME
+from saving.metrics import DOWNLOAD_SIZE, DOWNLOAD_TIME, LAST_DOWNLOAD_TIME
 
 
 def save_snapshot(data_root: str, base_url: str, username: str, password: str, path_this_day: str, path_next_day: str, push: bool):
@@ -55,3 +55,5 @@ def save_snapshot(data_root: str, base_url: str, username: str, password: str, p
         f"cd {current_path}; git commit -m '📖 add substitution plans from {datetime.now().strftime('%d.%m.%y, %H:%M')}'")
     if push:
         os.system("cd {current_path}; git push")
+
+    LAST_DOWNLOAD_TIME.set_to_current_time()
